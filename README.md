@@ -1,8 +1,22 @@
 # Product-Page
 
-This is a product page.
+### This is a product page.
 
 Coding along with a Vue crash tutorial. 
+
+### branch version-2 includes:
+- computed
+
+### branch version-1 includes basic Vue comments:
+- intro
+- creating the app
+- attribute binding
+- conditional rendering
+- list rendering
+- event handling
+- class & style binding
+
+<br>
 
 ***
 
