@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,56 @@
           <!-- ':' denotes 'v-bind:' -->
           <!-- 'key' gives each DOM element a unique key to track the element -->
           <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
-          <button class="button">Add to Cart</button>
+
+          <!-- change the color when hover over -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}
+          </div>
+
+          <!-- add css binding -->
+          <!-- 'backgroundColor' is camelCased property name -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+            class="color-circle" :style="{ backgroundColor: variant.color }"></div>
+
+          <!-- 'background-color' is kebab-cased property name, put inside quotes -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+            class="color-circle" :style="{ 'background-color': variant.color }"></div>
+
+
+          <!-- class binding -->
+          <!-- multiple classes -->
+          <!-- when the 'activeClass' is true, the 'active' class will be added to the class -->
+          <!-- the class changed to 'color-circle active' -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+            class="color-circle" :style="{ 'background-color': variant.color }"
+            :class="{ active: activeClass }"></div>
+
+          <!-- class binding -->
+          <!-- or we can use Ternary Operators -->
+          <!-- if 'isActive' is true, here we add the 'activeClass' -->
+          <!-- or, here we add the bland '' -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+            class="color-circle" :style="{ 'background-color': variant.color }"
+            :class="[ isActive ? activeClass : '' ]"></div>
+
+          <!-- or, sometimes if we put too much inline css, it would get messy -->
+          <!-- so we can add all inline css inside an object within data() -->
+          <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+            class="color-circle" :style="styles">{{ variant.color }}</div>
+
+          <!-- 'v-on:' is a directive used as event listener to listen to DOM events -->
+          <!-- 'click' here is the event we are listening to -->
+          <!-- 'cart += 1' is the expression we are running when the event is triggered -->
+          <button class="button" v-on:click="cart += 1">Add to Cart</button>
+
+          <!-- 'v-on:' can be shorthanded with '@' -->
+          <button class="button" @click="cart += 1">Add to Cart</button>
+
+          <!-- add a method name here -->
+          <button class="button" @click="addToCart">Add to Cart</button>
+
+          <!-- disable the button if it is out of stock -->
+          <button class="button" :class="{ disabledButton: !inStock }" @click="addToCart" :disabled="!inStock">
+            Add to Cart</button>
         </div>
       </div>
     </div>
