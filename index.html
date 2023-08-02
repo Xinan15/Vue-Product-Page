@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue App</title>
+  <title>Product Page</title>
   <!-- Import Styles -->
-  <link rel="stylesheet" href="./src/assets/styles.css">
+  <link rel="stylesheet" href="./assets/styles.css">
   <!-- Import Vue.js -->
   <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 </head>
@@ -17,50 +17,17 @@
 
     <div class="cart">Cart({{ cart }})</div>
 
-    <div class="product-display">
-      <div class="product-container">
-        <div class="product-image">
+    <!-- Here we use the template -->
+    <!-- pass the premium data from main.js into this component -->
+    <product-display :premium="premium"></product-display>
 
-          <!-- 'v-bind:' or shorthand ':' Dynamically bind an attribute to an expression -->
-          <img v-bind:src="image">
-          <img :src="image">
-
-        </div>
-        <div class="product-info">
-
-          <h1>{{ brand + ' ' + product }}</h1>
-
-          <!-- use computed property -->
-          <h1>{{ title }}</h1>
-
-          <!-- 'v-if' directive renders if the condition is true -->
-          <!-- if the condition is not true, renders 'v-else' -->
-          <p v-if="inStock">In Stock</p>
-          <p v-else>Out of Stock</p>
-
-          <ul>
-            <!-- 'v-for' works like a 'for loop' -->
-            <!-- Here 'details' is the name of the array -->
-            <!-- 'detail' is the alias for the elements inside the array -->
-            <li v-for="detail in details">{{ detail }}</li>
-          </ul>
-
-          <!-- 'background-color' is kebab-cased property name, put inside quotes -->
-          <!-- here we update image and inStock state using computed properties -->
-          <!-- use index is second parameter and pass it in -->
-          <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)"
-            class="color-circle" :style="{ 'background-color': variant.color }"></div>
-
-          <!-- disable the button if it is out of stock -->
-          <button class="button" :class="{ disabledButton: !inStock }" @click="addToCart" :disabled="!inStock">
-            Add to Cart</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- Import App -->
   <script src="./main.js"></script>
+
+  <!-- Import Components -->
+  <script src="./components/ProductDisplay.js"></script>
 
   <!-- Mount App -->
   <script>

@@ -2,12 +2,16 @@
 
 ### This is a product page.
 
-Coding along with a Vue crash tutorial. 
+Coding along with a Vue crash tutorial.
 
-### branch version-2 includes:
-- computed
+## branch version-2 includes:
 
-### branch version-1 includes basic Vue comments:
+- restructured category
+- computed property
+- components and props
+
+## branch version-1 includes basic Vue comments:
+
 - intro
 - creating the app
 - attribute binding
@@ -17,8 +21,18 @@ Coding along with a Vue crash tutorial.
 - class & style binding
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-***
+---
 
 The following are official documents:
 
