@@ -42,8 +42,8 @@ body {
 
 
 .disabledButton {
-  background-color: #d8d8d8;
-  cursor: not-allowed;
+  background-color: #d8d8d8 !important;
+  cursor: not-allowed !important;
 }
 
 h1 {

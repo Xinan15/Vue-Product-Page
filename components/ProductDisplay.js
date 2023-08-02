@@ -10,6 +10,7 @@
 // add all code inside the tick marks ``
 
 // props: a custom attribute for passing data into our components
+// emitting events: tell parent component that event has happened
 
 app.component("product-display", {
   props: {
@@ -18,6 +19,10 @@ app.component("product-display", {
       type: Boolean,
       required: true,
     },
+    cartLength: {
+        type: Number,
+        required: true,
+      },
   },
   template:
     /* html */
@@ -30,9 +35,6 @@ app.component("product-display", {
 
       </div>
       <div class="product-info">
-
-        <h1>{{ brand + ' ' + product }}</h1>
-
         <!-- use computed property -->
         <h1>{{ title }}</h1>
 
@@ -57,8 +59,20 @@ app.component("product-display", {
           class="color-circle" :style="{ 'background-color': variant.color }"></div>
 
         <!-- disable the button if it is out of stock -->
-        <button class="button" :class="{ disabledButton: !inStock }" @click="addToCart" :disabled="!inStock">
+        <button 
+            class="button" 
+            :class="{ disabledButton: !inStock }" 
+            @click="addToCart" 
+            :disabled="!inStock">
           Add to Cart</button>
+
+          <button 
+          class="button" 
+          :class="{ disabledButton: !inStock || cartLength === 0 }" 
+          :disabled="!inStock || cartLength === 0" 
+          @click="removeFromCart">
+          Remove Item
+        </button>
       </div>
     </div>
   </div>`,
@@ -104,10 +118,14 @@ app.component("product-display", {
   },
 
   // methods()
+  // here emits an event to the parent component, and the event name is 'add-to-cart'  
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
     },
+    removeFromCart() {
+        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
+      },
     updateVariant(index) {
       this.selectedVariant = index;
       console.log(index);

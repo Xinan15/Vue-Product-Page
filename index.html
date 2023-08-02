@@ -15,12 +15,17 @@
   <div id="app">
     <div class="nav-bar"></div>
 
-    <div class="cart">Cart({{ cart }})</div>
+    <div class="cart">Cart({{ cart.length }})</div>
 
     <!-- Here we use the template -->
     <!-- pass the premium data from main.js into this component -->
-    <product-display :premium="premium"></product-display>
-
+    <!-- add-to cart lives in the component -->
+    <!-- updateCart() lives in main.js -->
+    <product-display 
+      :premium="premium"
+      :cartLength="cart.length"
+      @add-to-cart="updateCart"
+      @remove-from-cart="removeById"></product-display>
   </div>
 
   <!-- Import App -->

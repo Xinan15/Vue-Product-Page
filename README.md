@@ -4,11 +4,16 @@
 
 Coding along with a Vue crash tutorial.
 
+product page demo
+
+![demo](vuedemo.png)
 ## branch version-2 includes:
 
 - restructured category
 - computed property
 - components and props
+- communicating events
+- forms & v-model
 
 ## branch version-1 includes basic Vue comments:
 
