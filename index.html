@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue App</title>
+  <!-- Import Styles -->
+  <link rel="stylesheet" href="./src/assets/styles.css">
+  <!-- Import Vue.js -->
+  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="nav-bar"></div>
+
+    <div class="cart">Cart({{ cart }})</div>
+
+    <div class="product-display">
+      <div class="product-container">
+        <div class="product-image">
+
+          <!-- 'v-bind:' or shorthand ':' Dynamically bind an attribute to an expression -->
+          <img v-bind:src="image">
+          <img :src="image">
+
+        </div>
+        <div class="product-info">
+
+          <!-- '{{  }}' inside double curly braces, we can run javascript expressions inside the html -->
+          <h1>{{ product }}</h1>
+
+          <!-- 'v-if' directive renders if the condition is true -->
+          <p v-if="inStock">In Stock</p>
+          <!-- if the condition is not true, renders 'v-else' -->
+          <p v-else>Out of Stock</p>
+
+          <!-- Similarly -->
+          <p v-if="inventory > 10">In Stock</p>
+          <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+          <p v-else>Out of Stock</p>
+
+          <!-- 'v-show' is used for toggling element's visibility -->
+          <!-- if the value is true, it renders the element. -->
+          <!-- if the value is false, the element would be hidden. -->
+          <p v-show="inStock">In Stock</p>
+
+          <ul>
+            <!-- 'v-for' works like a 'for loop' -->
+            <!-- Here 'details' is the name of the array -->
+            <!-- 'detail' is the alias for the elements inside the array -->
+            <li v-for="detail in details">{{ detail }}</li>
+          </ul>
+          <!-- ':' denotes 'v-bind:' -->
+          <!-- 'key' gives each DOM element a unique key to track the element -->
+          <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+          <button class="button">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import App -->
+  <script src="./main.js"></script>
+
+  <!-- Mount App -->
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
+</html>
