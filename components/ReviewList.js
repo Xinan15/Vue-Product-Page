@@ -8,7 +8,7 @@ app.component('review-list', {
     template:
     /*html*/
     `
-    <div class="review-container">
+    <div  v-if="reviews.length" class="review-container">
     <h3>Reviews:</h3>
       <ul>
         <li v-for="(review, index) in reviews" :key="index">
@@ -16,9 +16,9 @@ app.component('review-list', {
           <br/>
           "{{ review.review }}"
           <br/>
-          <!-- solution -->
+          
           Recommended: {{ review.recommend }}
-          <!-- solution -->
+          
         </li>
       </ul>
     </div>

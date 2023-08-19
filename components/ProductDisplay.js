@@ -75,6 +75,10 @@ app.component("product-display", {
         </button>
       </div>
     </div>
+
+    <review-list :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview" ></review-form>
+
   </div>`,
   // behind the template literal, we add our data and computed properties
   data() {
@@ -106,6 +110,10 @@ app.component("product-display", {
         fontSize: "20px",
       },
 
+      reviews: [],
+      tabs: ['review-form', 'review-list'],
+      activeTab: 'review-form',
+
       activeClass: true,
 
       isActive: true,
@@ -130,6 +138,9 @@ app.component("product-display", {
       this.selectedVariant = index;
       console.log(index);
     },
+    addReview(review) {
+      this.reviews.push(review)
+    }
   },
 
   // computed()
