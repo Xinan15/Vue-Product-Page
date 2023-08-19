@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+  <!-- Import Styles -->
+  
+  <!-- Import Vue.js -->
+  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/Vue-Product-Page/assets/index-1dac77d8.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="nav-bar"></div>
+
+    <div class="cart">Cart({{ cart.length }})</div>
+
+    <!-- Here we use the template -->
+    <!-- pass the premium data from main.js into this component -->
+    <!-- add-to cart lives in the component -->
+    <!-- updateCart() lives in main.js -->
+    <product-display 
+      :premium="premium"
+      :cartLength="cart.length"
+      @add-to-cart="updateCart"
+      @remove-from-cart="removeById"></product-display>
+  </div>
+
+  <!-- Import App -->
+  <script src="./main.js"></script>
+
+  <!-- Import Components -->
+  <script src="./components/ProductDisplay.js"></script>
+  
+  <script src="./components/ReviewForm.js"></script> 
+
+  <script src="./components/ReviewList.js"></script>
+
+  <!-- Mount App -->
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
+</body>
+
+</html>
