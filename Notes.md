@@ -27,6 +27,9 @@ git commit -m "Your commit message"
 6. Push the Changes:<br>
 git push origin target-branch-name
 
+## Referencing
+### In this project, base has been set, then should reference images (which are now in the public folder) as follows:
+image: "/Vue-Product-Page/images/socks_green.jpg"
 ## Difference between .js and .vue files for Vue components
 Both `.js` and `.vue` files can be used to create Vue components, but they serve different purposes and have different advantages and disadvantages. Here's a breakdown:
 
