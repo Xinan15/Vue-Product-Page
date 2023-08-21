@@ -49,8 +49,7 @@
 </template>
 
 <script>
-
-app.component("product-display", {
+export default {
   props: {
     // here is the props validation
     premium: {
@@ -149,7 +148,7 @@ app.component("product-display", {
       return 2.99;
     },
   },
-});
+};
 
 </script>
 

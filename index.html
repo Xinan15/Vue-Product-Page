@@ -5,39 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Page</title>
-  <!-- Import Styles -->
-  <link rel="stylesheet" href="./assets/styles.css">
-  <!-- Import Vue.js -->
-  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="./src/assets/styles.css">
 </head>
 
 <body>
-  <div id="app">
-    <div class="nav-bar"></div>
-
-    <div class="cart">Cart({{ cart.length }})</div>
-
-    <!-- Here we use the template -->
-    <!-- pass the premium data from main.js into this component -->
-    <!-- add-to cart lives in the component -->
-    <!-- updateCart() lives in main.js -->
-    <product-display 
-      :premium="premium"
-      :cartLength="cart.length"
-      @add-to-cart="updateCart"
-      @remove-from-cart="removeById"></product-display>
-  </div>
-
-  <!-- Import App -->
-  <script src="./main.js"></script>
-
-  <!-- Import Components -->
-  <script src="./components/ProductDisplay.js"></script>
-  
-  <script src="./components/ReviewForm.js"></script> 
-
-  <script src="./components/ReviewList.js"></script>
-
+  <div id="app"></div>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

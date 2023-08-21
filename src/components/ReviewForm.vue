@@ -36,7 +36,7 @@
 //  @submit.prevent="onSubmit"
 // the '.prevent' is a modifier, prevents the default browser refreshing behavior of the event
 
-app.component('review-form', {
+export default {
   data() {
     return {
       name: '',
@@ -71,7 +71,7 @@ app.component('review-form', {
 
     }
   }
-})
+}
 </script>
 
 <style scoped>

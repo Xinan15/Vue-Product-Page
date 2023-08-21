@@ -16,14 +16,14 @@
 </template>
 
 <script>
-app.component('review-list', {
+export default {
   props: {
     reviews: {
       type: Array,
       required: true
     }
   }
-})
+}
 </script>
 
 <style scoped>
