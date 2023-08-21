@@ -1,70 +1,30 @@
 # Product-Page
 
-### This is a product page.
+### This is a Vue.js project designed for product display.
 
 Coding along with a Vue crash tutorial.
 
-product page demo
+#### product page demo
 
-![demo](vuedemo.png)
-## branch version-2 includes:
+![demo](demo.png)
 
-- restructured category
-- computed property
-- components and props
-- communicating events
-- forms & v-model
+## Features
 
-## branch version-1 includes basic Vue comments:
+### 1. Dynamic Product Display (ProductDisplay.vue)
 
-- intro
-- creating the app
-- attribute binding
-- conditional rendering
-- list rendering
-- event handling
-- class & style binding
+- Image Switching: Hovering over colour variants changes the product image.
+- Inventory Check: Dynamically displays whether the product is in stock.
+- Shipping Cost: Calculates shipping cost based on user type (Premium or not).
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+### 2. Cart Management (App.vue and ProductDisplay.vue)
 
----
+- Add to Cart: Users can add items to the cart.
+- Remove from Cart: Items can be removed from the cart.
+- Cart Count: Dynamic display of the number of items in the cart.
 
-The following are official documents:
+### 3. User Reviews (ReviewForm.vue and ReviewList.vue)
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+- Review Submission: Users can submit product reviews, including name, review text, rating, and recommendation status.
+- Review List: Displays a list of all submitted reviews.
+- Rating: Users can rate the product on a scale of 1 to 5.
+- Recommendation: Users can specify whether they would recommend the product.

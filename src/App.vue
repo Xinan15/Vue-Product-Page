@@ -1,32 +1,39 @@
-<!-- Typically, the App.vue component should contain all the necessary logic, data properties, and methods. -->
+<!-- the App.vue is the root component where other components are imported and nested
+    It typically consists of three main sections:
+    <template>: This is the HTML template of the component.
+        It defines the structure and layout of the app's main view.
+    <script>: This section contains the JavaScript logic for the component.
+        Here you can import other components, define data properties, methods, computed properties, and more.
+    <style> -->
 
 <template>
     <div id="app">
-        <header>
-            <h1>My Product Page</h1>
-        </header>
-        <main>
-            <!-- Pass cart and premium as props to child components if needed -->
-            <ProductDisplay :cart="cart" :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeById" />
-            <section id="reviews">
-                <!-- Pass cart and premium as props to child components if needed -->
-                <ReviewList :cart="cart" />
-                <ReviewForm :premium="premium" />
-            </section>
-        </main>
+        <div class="nav-bar"></div>
+        <div class="cart">Cart({{ cart.length }})</div>
+        <product-display :premium="premium" :cart-length="cart.length" @add-to-cart="updateCart"
+            @remove-from-cart="removeById">
+        </product-display>
+        <review-list :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>
 </template>
-  
+      
 <script>
 import ProductDisplay from './components/ProductDisplay.vue';
 import ReviewForm from './components/ReviewForm.vue';
 import ReviewList from './components/ReviewList.vue';
 
 export default {
+    components: {
+        ProductDisplay,
+        ReviewForm,
+        ReviewList
+    },
     data() {
         return {
             cart: [],
             premium: false,
+            reviews: []
         };
     },
     methods: {
@@ -39,15 +46,9 @@ export default {
                 this.cart.splice(index, 1);
             }
         },
-    },
-    components: {
-        ProductDisplay,
-        ReviewList,
-        ReviewForm,
+        addReview(review) {
+            this.reviews.push(review);
+        }
     },
 };
 </script>
-  
-<style scoped>
-/* Add your styles here */
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="reviews.length" class="review-container">
+  <div class="review-container">
     <h3>Reviews:</h3>
     <ul>
       <li v-for="(review, index) in reviews" :key="index">
@@ -7,9 +7,7 @@
         <br />
         "{{ review.review }}"
         <br />
-
         Recommended: {{ review.recommend }}
-
       </li>
     </ul>
   </div>
@@ -23,9 +21,5 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
-
-<style scoped>
-/* TODO: Add styles here */
-</style>
