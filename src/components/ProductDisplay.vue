@@ -1,34 +1,7 @@
-// in morden front-end javascript frameworks, components are the building blocks of an app
-// they are a bit like legos that you can plug into each other in this component hierarchy
-
-// here 'product-display' is the name of the component
-// inside the {} curly braces is the component definition to configure the component
-// template is a property that defines the html template that will be used for this component
-
-// '/* html */' this is a special comment that tells the editor to treat the code inside as html
-// this activates the es6 string extension
-// add all code inside the tick marks ``
-
-// props: a custom attribute for passing data into our components
-// emitting events: tell parent component that event has happened
-
-app.component("product-display", {
-  props: {
-    // here is the props validation
-    premium: {
-      type: Boolean,
-      required: true,
-    },
-    cartLength: {
-        type: Number,
-        required: true,
-      },
-  },
-  template:
-    /* html */
-    `<div class="product-display">
+<template>
+  <div class="product-display">
     <div class="product-container">
-    <div class="product-image">
+      <div class="product-image">
 
         <!-- 'v-bind:' or shorthand ':' Dynamically bind an attribute to an expression -->
         <img :src="image">
@@ -55,31 +28,40 @@ app.component("product-display", {
         <!-- 'background-color' is kebab-cased property name, put inside quotes -->
         <!-- here we update image and inStock state using computed properties -->
         <!-- use index is second parameter and pass it in -->
-        <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)"
-          class="color-circle" :style="{ 'background-color': variant.color }"></div>
+        <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle"
+          :style="{ 'background-color': variant.color }"></div>
 
         <!-- disable the button if it is out of stock -->
-        <button 
-            class="button" 
-            :class="{ disabledButton: !inStock }" 
-            @click="addToCart" 
-            :disabled="!inStock">
+        <button class="button" :class="{ disabledButton: !inStock }" @click="addToCart" :disabled="!inStock">
           Add to Cart</button>
 
-          <button 
-          class="button" 
-          :class="{ disabledButton: !inStock || cartLength === 0 }" 
-          :disabled="!inStock || cartLength === 0" 
-          @click="removeFromCart">
+        <button class="button" :class="{ disabledButton: !inStock || cartLength === 0 }"
+          :disabled="!inStock || cartLength === 0" @click="removeFromCart">
           Remove Item
         </button>
       </div>
     </div>
 
     <review-list :reviews="reviews"></review-list>
-    <review-form @review-submitted="addReview" ></review-form>
+    <review-form @review-submitted="addReview"></review-form>
 
-  </div>`,
+  </div>
+</template>
+
+<script>
+
+app.component("product-display", {
+  props: {
+    // here is the props validation
+    premium: {
+      type: Boolean,
+      required: true,
+    },
+    cartLength: {
+      type: Number,
+      required: true,
+    },
+  },
   // behind the template literal, we add our data and computed properties
   data() {
     return {
@@ -132,8 +114,8 @@ app.component("product-display", {
       this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
     },
     removeFromCart() {
-        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
-      },
+      this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
+    },
     updateVariant(index) {
       this.selectedVariant = index;
       console.log(index);
@@ -168,3 +150,9 @@ app.component("product-display", {
     },
   },
 });
+
+</script>
+
+<style scoped>
+/* TODO: Add styles here */
+</style>
