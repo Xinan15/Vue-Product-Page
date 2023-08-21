@@ -50,13 +50,13 @@ export default {
         {
           id: 2234,
           color: "green",
-          image: "/images/socks_green.jpg",
+          image: "/Vue-Product-Page/images/socks_green.jpg",
           quantity: 50,
         },
         {
           id: 2235,
           color: "blue",
-          image: "/images/socks_blue.jpg",
+          image: "/Vue-Product-Page/images/socks_blue.jpg",
           quantity: 0,
         },
       ],
